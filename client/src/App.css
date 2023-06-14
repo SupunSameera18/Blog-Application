@@ -1,1 +1,85 @@
+.navbar {
+  padding: 10px  30px;
+}
+
+.navbar .links {
+  display: flex;
+  justify-content: end;
+}
+
+.navbar .navbar-brand {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.navbar .nav-item {
+  margin: 0 10px;
+}
+
+.navbar .nav-item a {
+  font-weight: 600;
+}
+
+.post {
+  display: flex;
+  gap: 25px;
+  padding: 20px;
+  background-color: #F0F2F5;
+  border-radius: 5px;
+  margin: 60px 50px 30px;
+}
+
+.post .image img {
+  width: 400px;
+  height: 400px;
+  border-radius: 5px;
+}
+
+.post .text .title {
+  margin-bottom: 20px;
+}
+
+.post .text .details {
+  display: flex;
+  gap: 10px;
+}
+
+.post .text .details .author a{
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+}
+
+.post .text .description {
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  position: absolute;
+  background-color: #F0F2F5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
 
