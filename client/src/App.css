@@ -71,13 +71,18 @@
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
+.form-signin input.email {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.form-signin input.pass {
+  margin-bottom: -1px;
+  border-radius: 0;
+}
+
+.form-signin input.verify-pass {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
