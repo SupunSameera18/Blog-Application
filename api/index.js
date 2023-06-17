@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-const { default: mongoose } = require('mongoose');
+const bcrypt = require('bcryptjs');
+const { default: mongoose, connection } = require('mongoose');
 const user = require('./models/user')
+
+const salt = bcrypt.genSaltSync(10);
 
 const app = express();
 app.use(cors());
@@ -11,16 +14,23 @@ mongoose.connect('mongodb://0.0.0.0:27017/blog');
 
 app.post("/register", async (req, res) => {
     const { userMail, password } = req.body;
-    let userData = { userMail, password };
+    const hashedPassword = bcrypt.hashSync(password, salt);
+    let userData = { userMail, hashedPassword };
 
     await user.create(userData).then(savedUser => {
         console.log('User saved successfully:', savedUser.userMail);
     })
         .catch(error => {
             console.error('Error saving user:', error);
-        });;
+        });
+})
 
-    res.json({ userData });
+app.post("/login", async (req, res) => {
+    const {userMail, password} = req.body;
+
+    const info = await user.findOne({userMail: userMail});
+    const verification = bcrypt.compareSync(password, info.hashedPassword);
+    console.log(verification);
 })
 
 app.listen("4000", () => {

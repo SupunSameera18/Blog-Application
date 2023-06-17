@@ -3,15 +3,24 @@ import { useState } from "react";
 export default function Register() {
     const [userMail, setUserMail] = useState("");
     const [password, setPassword] = useState("");
+    const [verifyPass, setVerifyPass] = useState("");
+
 
     async function register(e) {
         e.preventDefault();
-        await fetch("http://localhost:4000/register", {
-            method: "POST",
-            body: JSON.stringify({ userMail, password }),
-            headers: { "Content-Type": "application/json" },
-        });
+        if (password === verifyPass) {
+            await fetch("http://localhost:4000/register", {
+                method: "POST",
+                body: JSON.stringify({ userMail, password }),
+                headers: { "Content-Type": "application/json" },
+
+            });
+        } else {
+            alert("Password Not Matching");
+        }
     }
+
+
 
     return (
         <main class="form-signin">
@@ -46,6 +55,8 @@ export default function Register() {
                         class="form-control verify-pass"
                         id="floatingPassword"
                         placeholder="Verify Password"
+                        value={verifyPass}
+                        onChange={(e) => setVerifyPass(e.target.value)}
                     ></input>
                     <label for="floatingPassword">Verify Password</label>
                 </div>
